@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculadora de facturación</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="number"], input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 3px;
+        border: none;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        font-size: 16px;
+        color: #333;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      .total {
+        text-align: center;
+        font-size: 24px;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculadora de facturación</h1>
+    <form id="facturacionForm">
+      <label for="visitas">Número de visitas (10€ cada una)</label>
+      <input type="number" id="visitas" name="visitas" min="0" value="0">
+
+      <label for="crioterapias">Número de Crioterapias (695- 7€ cada una)</label>
+      <input type="number" id="crioterapias" name="crioterapias" min="0" value="0">
+
+      <label for="molluscum">Número de Molluscum (9488- 15€ cada uno)</label>
+      <input type="number" id="molluscum" name="molluscum" min="0" value="0">
+	  
+	  <label for="biopsias">Número de Biopsias (683- 15€ cada uno)</label>
+      <input type="number" id="biopsias" name="biopsias" min="0" value="0">
+	  
+	   <label for="cyc">Número de Cabeza y Cuello (945-85€ cada uno)</label>
+      <input type="number" id="cyc" name="cyc" min="0" value="0">
+
+      <label for="fotofinders">Número de Fotofinders/Trichoscans (40€ cada uno)</label>
+      <input type="number" id="fotofinders" name="fotofinders" min="0" value="0">
+
+      <label for="otro">Importe libre en €</label>
+      <input type="number" id="otro" name="otro" value="0">
+
+      <input type="submit" value="Calcular facturación">
+    </form>
+
+    <div class="total">
+      Total: <span id="totalFacturacion">0</span> €
+    </div>
+
+    <script>
+      const form = document.querySelector('#facturacionForm');
+      const totalFacturacion = document.querySelector('#totalFacturacion');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const visitas = parseFloat(document.querySelector('#visitas').value);
+const crioterapias = parseFloat(document.querySelector('#crioterapias').value);
+const molluscum = parseFloat(document.querySelector('#molluscum').value);
+const biopsias = parseFloat(document.querySelector('#biopsias').value);
+const cyc = parseFloat(document.querySelector('#cyc').value);
+const fotofinders = parseFloat(document.querySelector('#fotofinders').value);
+const otro = parseFloat(document.querySelector('#otro').value);
+ const total = (visitas * 10) + (crioterapias * 6.5) + (molluscum * 19.3) + (biopsias * 15)+ (cyc*85) + (fotofinders * 40) + otro;
+
+    totalFacturacion.textContent = total.toFixed(0);
+  })
+</script>
+ </body>
+</html>
